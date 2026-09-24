@@ -16,7 +16,7 @@ class Db:
         self.pool = await asyncpg.create_pool(dsn=db_url)
 
     async def connect_from_environment(self):
-        db_url = os.environ.get("DATABASE_URL")
+        db_url = os.environ.get("DATABASE_URL", "").strip().strip('"').strip("'")
         if not db_url:
             raise HTTPException(
                 status_code=503,
