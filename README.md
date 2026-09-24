@@ -28,6 +28,23 @@ uvicorn main:app --reload
 
 Abre el navegador en <http://127.0.0.1:8000/productos>.
 
+## Publicación en Vercel
+
+El archivo `vercel.json` configura `api/index.py` como punto de entrada de la aplicación FastAPI.
+
+1. Sube este repositorio a GitHub y créalo como un nuevo proyecto en Vercel.
+2. En **Settings > Environment Variables**, añade `DATABASE_URL` con la cadena de conexión de PostgreSQL.
+3. Pulsa **Deploy**. La aplicación quedará disponible en la URL que asigne Vercel.
+
+También puedes publicar desde la terminal:
+
+```bash
+npm install -g vercel
+vercel
+```
+
+No subas el archivo `.env`; las variables de producción deben configurarse en Vercel.
+
 ## Estado del proyecto
 
 - La página `GET /productos` ya muestra la lista de productos.
