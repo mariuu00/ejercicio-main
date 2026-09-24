@@ -12,12 +12,6 @@ load_dotenv(Path(__file__).resolve().parent / ".env")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    db_url = os.environ.get("DATABASE_URL")
-    if db_url:
-        await db.connect(db_url)
-        app.state.database_configured = True
-    else:
-        app.state.database_configured = False
     try:
         yield
     finally:
