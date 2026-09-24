@@ -12,8 +12,12 @@ class Db:
     _connect_lock = asyncio.Lock()
 
     async def connect(self, db_url: str):
-        # Crea un pool: varias conexiones que se reutilizan entre peticiones.
-        self.pool = await asyncpg.create_pool(dsn=db_url)
+        self.pool = await asyncpg.create_pool(
+            dsn=db_url,
+            min_size=1,
+            max_size=1,
+            timeout=15,
+        )
 
     async def connect_from_environment(self):
         db_url = os.environ.get("DATABASE_URL", "").strip().strip('"').strip("'")
