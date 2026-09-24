@@ -1,5 +1,6 @@
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 from dotenv import load_dotenv
@@ -7,7 +8,7 @@ from dotenv import load_dotenv
 from database import db
 from vistas import router as vistas_router
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
