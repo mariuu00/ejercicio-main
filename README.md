@@ -34,6 +34,7 @@ El archivo `vercel.json` configura `api/index.py` como punto de entrada de la ap
 
 1. Sube este repositorio a GitHub y créalo como un nuevo proyecto en Vercel.
 2. En **Settings > Environment Variables**, añade `DATABASE_URL` con la cadena de conexión de PostgreSQL.
+  Selecciona al menos el entorno **Production** (y **Preview** si también probarás las URLs de vista previa).
 3. Pulsa **Deploy**. La aplicación quedará disponible en la URL que asigne Vercel.
 
 También puedes publicar desde la terminal:

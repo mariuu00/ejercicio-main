@@ -21,5 +21,7 @@ db = Db()
 
 async def get_connection():
     """Dependencia de FastAPI: cede una conexión del pool a cada petición."""
+    if db.pool is None:
+        raise RuntimeError("DATABASE_URL no está configurada o la conexión no está disponible")
     async with db.pool.acquire() as conn:
         yield conn

@@ -1,4 +1,5 @@
 from typing import Annotated
+from pathlib import Path
 
 from fastapi import APIRouter, Form, Request
 from fastapi.templating import Jinja2Templates
@@ -10,7 +11,7 @@ from repositorio import actualizar_producto, obtener_producto, obtener_productos
 
 router = APIRouter(tags=["productos"])
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory=str(Path(__file__).resolve().parent / "templates"))
 
 
 @router.get("/")
